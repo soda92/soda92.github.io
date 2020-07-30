@@ -27,5 +27,5 @@ end
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
-
-gem "activesupport", "4.1.11"
+gem "json", ">= 2.3.0"
+gem "activesupport"
