@@ -1,2 +1,1 @@
-# SodaCris.github.io
-my github pages.
+托管在GitHub上的博客。
