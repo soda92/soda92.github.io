@@ -6,13 +6,13 @@ title: tampermonkey验证码识别
 首先安装tesseract。
 
 参考：
-[https://github.com/tesseract-ocr/tessdoc/blob/master/Installation.md](https://github.com/tesseract-ocr/tessdoc/blob/master/Installation.md)
+[Installation](https://github.com/tesseract-ocr/tessdoc/blob/master/Installation.md)
 
-[https://tesseract-ocr.github.io/tessdoc/Home.html](https://tesseract-ocr.github.io/tessdoc/Home.html)
+[tessdoc/Home](https://tesseract-ocr.github.io/tessdoc/Home.html)
 
 编译安装方法
 
-参考：[https://tesseract-ocr.github.io/tessdoc/Compiling-%E2%80%93-GitInstallation.html](https://tesseract-ocr.github.io/tessdoc/Compiling-%E2%80%93-GitInstallation.html)
+参考：[Compiling-GitInstallation](https://tesseract-ocr.github.io/tessdoc/Compiling-%E2%80%93-GitInstallation.html)
 
 通过pip安装pytesseract
 
@@ -53,11 +53,11 @@ asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
 ```
 
-reference:
+参考:
 
-1. [https://jdhao.github.io/2020/03/17/base64_opencv_pil_image_conversion/](https://jdhao.github.io/2020/03/17/base64_opencv_pil_image_conversion/)
-2. [https://github.com/madmaze/pytesseract](https://github.com/madmaze/pytesseract)
-3. [https://websockets.readthedocs.io/en/stable/intro.html](https://websockets.readthedocs.io/en/stable/intro.html)
+1. [base64 image conversion](https://jdhao.github.io/2020/03/17/base64_opencv_pil_image_conversion/)
+2. [github pytesseract](https://github.com/madmaze/pytesseract)
+3. [python websockets](https://websockets.readthedocs.io/en/stable/intro.html)
 
 tampermonkey userjs:
 
@@ -142,7 +142,7 @@ tampermonkey userjs:
 
 1. [observe dom change - stackoverflow](https://stackoverflow.com/a/34864115)
 2. [websocket - mozilla](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications)
-3. [https://dev.to/migsarnavarro/how-to-base64-encode-an-image-in-javascript-4k8e](https://dev.to/migsarnavarro/how-to-base64-encode-an-image-in-javascript-4k8e)
+3. [base64 image in javascript](https://dev.to/migsarnavarro/how-to-base64-encode-an-image-in-javascript-4k8e)
 
 效果（2倍速）：
 
