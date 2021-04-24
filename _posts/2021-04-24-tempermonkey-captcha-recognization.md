@@ -51,12 +51,13 @@ start_server = websockets.serve(get_ocr, "127.0.0.1", 5678)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
-
-# reference:
-# https://jdhao.github.io/2020/03/17/base64_opencv_pil_image_conversion/
-# https://github.com/madmaze/pytesseract
-# https://websockets.readthedocs.io/en/stable/intro.html
 ```
+
+reference:
+
+1. [https://jdhao.github.io/2020/03/17/base64_opencv_pil_image_conversion/](https://jdhao.github.io/2020/03/17/base64_opencv_pil_image_conversion/)
+2. [https://github.com/madmaze/pytesseract](https://github.com/madmaze/pytesseract)
+3. [https://websockets.readthedocs.io/en/stable/intro.html](https://websockets.readthedocs.io/en/stable/intro.html)
 
 tampermonkey userjs:
 
@@ -71,7 +72,7 @@ tampermonkey userjs:
     }
 
     // encode img to base64
-    // see: https://dev.to/migsarnavarro/how-to-base64-encode-an-image-in-javascript-4k8e
+    // see: ref 3
     function imgToBase64(img, dom) {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
@@ -105,8 +106,7 @@ tampermonkey userjs:
         password.value = "test";
     }
 
-    // about websocket, see: 
-    // https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications
+    // about websocket, see ref 2
     var ws = new WebSocket("ws://127.0.0.1:5678/");
 
     ws.onmessage = function (event) {
@@ -119,7 +119,7 @@ tampermonkey userjs:
     var a = 1;
     
     // specific dom loaded
-    // ref: https://stackoverflow.com/a/34864115
+    // ref: [1]
     var observer = new MutationObserver(function (mutationRecords) {
         console.log("change detected");
         let encodeded = imgToBase64(checkcode_dom, dom);
@@ -137,3 +137,15 @@ tampermonkey userjs:
     observer.observe(get_elem('//*[@id="divNotice"]'), { childList: true });
 })();
 ```
+
+参考：
+
+1. [observe dom change - stackoverflow](https://stackoverflow.com/a/34864115)
+2. [websocket - mozilla](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications)
+3. [https://dev.to/migsarnavarro/how-to-base64-encode-an-image-in-javascript-4k8e](https://dev.to/migsarnavarro/how-to-base64-encode-an-image-in-javascript-4k8e)
+
+效果（2倍速）：
+
+![img]({{ site.url }}/assets/captcha.gif)
+
+可以看到，识别并不是十分准确。
