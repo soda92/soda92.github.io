@@ -3,8 +3,6 @@ layout: post
 title: 代码的政治性
 ---
 
-知识带来力量, 知识带来歧视!
-
 原文链接：[Coding is political](https://ehmatthes.github.io/pcc_2e/)
 
 译文(使用Google翻译):
