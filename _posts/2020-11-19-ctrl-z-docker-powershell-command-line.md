@@ -1,6 +1,8 @@
 ---
 layout: post
 title: ctrl+z导致powershell中docker命令行意外退出
+date: 2020-11-19 10:00:00 +0800
+categories: dev
 ---
 
 最近经常使用 pwsh（PowerShell Core）连接 docker 访问 PostgreSQL 数据库，当我编辑命令的时候，可以使用 Ctrl+左右方向键进行左右词间的跳转，或者使用 alt+backspace 进行以词为单位的删除。

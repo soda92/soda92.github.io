@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 代码的政治性
+date: 2021-07-27 10:00:00 +0800
+categories: others
 ---
 
 原文链接：[Coding is political](https://ehmatthes.github.io/pcc_2e/)

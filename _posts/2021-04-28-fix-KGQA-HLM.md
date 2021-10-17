@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 一个项目的fix
+date: 2021-04-28 10:00:00 +0800
+categories: dev
 ---
 
 最近研究知识图谱，看到了两篇知识图谱的文章[[1]](https://zhuanlan.zhihu.com/p/337115405)[[2]](https://zhuanlan.zhihu.com/p/360877984)，里面提到了一个[项目](https://github.com/chizhu/KGQA_HLM)，本人下载下来后，遇到了一些错误，在此把fix的过程分享一下。

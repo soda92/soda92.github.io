@@ -1,6 +1,8 @@
 ---
 layout: post
 title: TDLib编译错误
+date: 2021-05-02 10:00:00 +0800
+categories: dev
 ---
 
 今天编译TDLib，出现了以下错误：

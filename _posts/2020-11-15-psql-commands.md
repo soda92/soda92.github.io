@@ -1,6 +1,8 @@
 ---
 layout: post
 title: psql常用命令
+date: 2020-11-15 10:00:00 +0800
+categories: dev
 ---
 
 | 命令                   | 作用                                                |
