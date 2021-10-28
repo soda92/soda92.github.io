@@ -119,6 +119,23 @@ chsh -s $(which zsh)
 
 qtcreator是之前卸载的.
 
+## 设置防火墙
+
+针对ftp服务（vsftpd）：
+
+```sh
+sudo firewall-cmd --add-port=21/tcp
+sudo firewall-cmd --runtime-to-permanent
+```
+
+查看允许的端口
+
+```sh
+sudo firewall-cmd --list-ports
+```
+
+参考：[fedora文档](https://docs.fedoraproject.org/en-US/quick-docs/firewalld/)
+
 # 其他
 
 查看开机启动时的错误:
