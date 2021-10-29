@@ -23,6 +23,17 @@ categories: dev
 
 通过ssh连接后，升级系统，安装常用软件。
 
+安装[cockpit](https://cockpit-project.org/running.html#fedora)
+
+```
+sudo dnf install cockpit
+sudo systemctl enable --now cockpit.socket
+sudo firewall-cmd --add-service=cockpit
+sudo firewall-cmd --add-service=cockpit --permanent
+```
+
+web控制台在9090端口。
+
 ## Windows Terminal设置
 
 更改默认配色为One Half Dark，下载[Recursive Font](https://recursive.design), 更改字体为Rec Mono Linear.
@@ -37,7 +48,3 @@ Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 # 卸载软件
 
 卸载联想电脑管家。
-
-# 最后
-
-大概就这些。目前打算装个vsftpd测试公司的项目。
