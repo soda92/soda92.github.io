@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-无业游民. 在外流浪.
+一切总要以实力为支撑.
