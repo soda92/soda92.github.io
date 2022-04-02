@@ -10,6 +10,24 @@ Welcome to SodaCris's blog!
    :maxdepth: 2
    :caption: Contents:
 
+   2022-03-28-the-direction
+   2021-12-21-building-qt
+   2021-11-11-visual-studio-2022-current-released
+   2021-10-29-new-laptop-config
+   2021-10-28-toybrick-tb96-ai
+   2021-10-17-trying-d3js
+   2021-10-17-no-money
+   2021-10-14-finding-myself
+   2021-10-13-working-as-a-courier
+   2021-09-26-using-of-auto-in-cpp
+   2021-09-26-switching-from-virtual-machine-to-remote-development
+   2021-07-27-coding-is-political
+   2021-05-02-too-few-arguments-to-function-int-EVP_MAC_init
+   2021-04-28-fix-KGQA-HLM
+   2021-04-24-tempermonkey-captcha-recognization
+   2020-11-19-ctrl-z-docker-powershell-command-line
+   2020-11-15-psql-commands
+   about
 
 
 Indices and tables
