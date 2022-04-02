@@ -149,6 +149,6 @@ tampermonkey userjs:
 
 效果（2倍速）：
 
-![img]({{ site.url }}/assets/captcha.gif)
+![img](source/_static/captcha.gif)
 
 可以看到，识别并不是十分准确。
