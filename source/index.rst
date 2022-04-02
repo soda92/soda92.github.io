@@ -10,6 +10,7 @@ Welcome to SodaCris's blog!
    :maxdepth: 2
    :caption: Contents:
 
+   move-to-ipykernel
    2022-03-28-the-direction
    2021-12-21-building-qt
    2021-11-11-visual-studio-2022-current-released
