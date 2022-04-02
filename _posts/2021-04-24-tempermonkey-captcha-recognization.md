@@ -4,6 +4,7 @@ title: tampermonkey验证码识别
 date: 2021-04-24 10:00:00 +0800
 categories: dev
 ---
+# tampermonkey验证码识别
 
 首先安装tesseract。
 
@@ -148,6 +149,6 @@ tampermonkey userjs:
 
 效果（2倍速）：
 
-![img]({{ site.url }}/assets/captcha.gif)
+![img](source/_static/captcha.gif)
 
 可以看到，识别并不是十分准确。
