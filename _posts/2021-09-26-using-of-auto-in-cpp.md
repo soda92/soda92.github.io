@@ -4,6 +4,7 @@ title:  "C++中auto的使用"
 date: 2021-09-26 10:08:00 +0800
 categories: dev
 ---
+# C++中auto的使用
 
 ```cpp
 // Basic 10-element integer array.

@@ -4,6 +4,7 @@ title:  "从虚拟环境切换到远程开发"
 date: 2021-09-26 01:29:00 +0800
 categories: dev
 ---
+# 从虚拟环境切换到远程开发
 
 由于各种各样的原因, 总会用到Linux. 比如, 在Windows中不想使用庞大的Visual Studio时, 使用Visual Studio Code开发C++代码, 这时使用的时MinGW环境, 但调试时, 容器的内容却显示不出来. 应该是gdb在Windows中的pretty-printer的问题.
 

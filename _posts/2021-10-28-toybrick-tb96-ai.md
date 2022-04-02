@@ -5,6 +5,8 @@ date: 2021-10-28 09:16:00 +0800
 categories: dev
 ---
 
+# toybrick板子折腾笔记
+
 在公司拿到了一个测试用的板子，tb96-ai + rk3399pro.
 
 ```bash
@@ -14,7 +16,7 @@ rockchip,rk3399pro-toybrick-96ai-linuxrockchip,rk3399pro
 
 系统是fedora28.
 
-# 设置ssh
+## 设置ssh
 连入键盘和鼠标, 编辑`/etc/ssh/sshd_config`, 将
 
 ```sshd_config
@@ -71,12 +73,12 @@ systemctl enable getty@tty1.service
 
 然后重启.
 
-# mirror设置
+## mirror设置
 
 配置文件在`/etc/yum.repos.d`. 文件参考[github](https://github.com/soda92/fedora-repo-config).
 编辑`/etc/dnf/dnf.conf`, 在最后加入`fastestmirror=1`.
 
-# 软件升级
+## 软件升级
 
 升级系统： [fedora wiki](https://docs.fedoraproject.org/en-US/quick-docs/dnf-system-upgrade/)。
 只支持跨两个版本，所以我升级到了fedora 30.  (不知道会不会break原本的驱动和库
@@ -136,7 +138,7 @@ sudo firewall-cmd --list-ports
 
 参考：[fedora文档](https://docs.fedoraproject.org/en-US/quick-docs/firewalld/)
 
-# 其他
+## 其他
 
 查看开机启动时的错误:
 
