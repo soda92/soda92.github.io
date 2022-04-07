@@ -10,6 +10,7 @@ Welcome to SodaCris's blog!
    :maxdepth: 2
    :caption: Contents:
 
+   thesis
    move-to-ipykernel
    2022-03-28-the-direction
    2021-12-21-building-qt
