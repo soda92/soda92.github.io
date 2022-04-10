@@ -30,6 +30,13 @@ Welcome to SodaCris's blog!
    2021-04-24-tempermonkey-captcha-recognization
    2020-11-19-ctrl-z-docker-powershell-command-line
    2020-11-15-psql-commands
+
+关于
+----
+
+.. toctree::
+   :maxdepth: 1
+
    about
 
 
