@@ -7,8 +7,8 @@ Welcome to SodaCris's blog!
 ===========================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: 文章:
 
    rust-interactive
    thesis
