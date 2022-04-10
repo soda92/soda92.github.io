@@ -10,9 +10,9 @@ Welcome to SodaCris's blog!
    :maxdepth: 1
    :caption: 文章:
 
-   rust-interactive
-   thesis
-   move-to-ipykernel
+   2022-04-09-rust-interactive
+   2022-04-07-thesis
+   2022-04-03-move-to-ipykernel
    2022-03-28-the-direction
    2021-12-21-building-qt
    2021-11-11-visual-studio-2022-current-released
