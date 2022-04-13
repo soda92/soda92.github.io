@@ -10,6 +10,8 @@ Welcome to SodaCris's blog!
    :maxdepth: 1
    :caption: 文章:
 
+   2022-04-13-vagrant-config
+   2022-04-12-trying-build-python
    2022-04-09-rust-interactive
    2022-04-07-thesis
    2022-04-03-move-to-ipykernel
