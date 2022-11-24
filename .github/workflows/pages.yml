@@ -27,7 +27,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: build
-        run: make html
+        run: python3 gen.py && make html
 
       - name: commit
         run: |
