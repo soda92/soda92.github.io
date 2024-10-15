@@ -11,3 +11,9 @@ categories: dev
 ![img]({{ site.url }}/assets/VS2022-2.png)
 
 看来ML.NET需要学一学了. 希望能够改变我对机器学习的看法.
+
+## 15/10/2024 更新
+
+微软还是不行。Just a machine. 
+
+C++已经过气了。
