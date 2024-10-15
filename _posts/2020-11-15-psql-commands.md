@@ -5,7 +5,7 @@ date: 2020-11-15 10:00:00 +0800
 categories: dev
 ---
 
-| 命令                   | 作用                                                |
+| 命令 Command                  | 作用              Action                                  |
 | ---------------------- | --------------------------------------------------- |
 | `\h [NAME] `           | help on syntax of SQL commands, \* for all commands |
 | `\d[S+] `              | list tables, views, and sequences                   |
