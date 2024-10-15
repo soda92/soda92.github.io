@@ -36,4 +36,4 @@ gem "addressable", ">= 2.8.0"
 gem "nokogiri", ">= 1.11.4"
 
 
-gem "webrick", "~> 1.7"
+gem "webrick", "~> 1.8"
