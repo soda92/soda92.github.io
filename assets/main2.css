@@ -1,3 +1,5 @@
 * {
-    font-family: "Noto Sans CJK SC"!important;
+    font-family: "Noto Sans SC", sans-serif !important;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
