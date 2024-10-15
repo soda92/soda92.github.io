@@ -1,0 +1,31 @@
+.. SodaCris's blog documentation master file, created by
+   sphinx-quickstart on Sat Apr  2 15:57:14 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Soda Cris
+=========
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Articles:
+
+   2022-04-03-move-to-ipykernel.ipynb
+   2021-07-27-coding-is-political.ipynb
+   2020-11-19-ctrl-z-docker-powershell-command-line.ipynb
+   2021-10-28-toybrick-tb96-ai.ipynb
+   2021-10-17-trying-d3js.ipynb
+   2021-12-21-building-qt.ipynb
+   2022-11-24-linux-scan-new-disk-vmware.ipynb
+   2021-09-26-using-of-auto-in-cpp.ipynb
+   2022-04-13-vagrant-config.ipynb
+   2021-04-24-tempermonkey-captcha-recognization.ipynb
+
+About
+-------
+
+.. toctree::
+   :maxdepth: 1
+
+   about
+

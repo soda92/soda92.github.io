@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en-US" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>toybrick板子折腾笔记 &#8212; SodaCris&#39;s blog  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <script src="_static/documentation_options.js?v=ccd1e645"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="尝试d3js" href="2021-10-17-trying-d3js.html" />
+    <link rel="prev" title="ctrl+z导致powershell中docker命令行意外退出" href="2020-11-19-ctrl-z-docker-powershell-command-line.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="toybrick">
+<h1>toybrick板子折腾笔记<a class="headerlink" href="#toybrick" title="Link to this heading">¶</a></h1>
+<p>在公司拿到了一个测试用的板子，tb96-ai + rk3399pro.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>toybrick@toybrick<span class="o">]</span>~%<span class="w"> </span>cat<span class="w"> </span>/proc/device-tree/compatible
+rockchip,rk3399pro-toybrick-96ai-linuxrockchip,rk3399pro
+</pre></div>
+</div>
+<p>系统是fedora28.</p>
+<section id="ssh">
+<h2>设置ssh<a class="headerlink" href="#ssh" title="Link to this heading">¶</a></h2>
+<p>连入键盘和鼠标, 编辑<code class="docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code>, 将</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Port 22</span>
+</pre></div>
+</div>
+<p>取消注释, 然后</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>sshd
+</pre></div>
+</div>
+</section>
+<section id="gui">
+<h2>设置不启动GUI<a class="headerlink" href="#gui" title="Link to this heading">¶</a></h2>
+<p>为了减少CPU占用嘛.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>set-default<span class="w"> </span>multi-user.target
+</pre></div>
+</div>
+<p>要恢复的话</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>set-default<span class="w"> </span>graphical.target
+</pre></div>
+</div>
+</section>
+<section id="shell">
+<h2>设置shell自动登录<a class="headerlink" href="#shell" title="Link to this heading">¶</a></h2>
+<p>系统在登录后才会连接wifi，不知道为啥。</p>
+<p>设置shell自动登录：参考<a class="reference external" href="https://unix.stackexchange.com/questions/401759/automatically-login-on-debian-9-2-1-command-line">stackchange</a></p>
+<p>编辑<code class="docutils literal notranslate"><span class="pre">/etc/systemd/logind.conf</span></code>, 将<code class="docutils literal notranslate"><span class="pre">#NAutoVTs=6</span></code>改为<code class="docutils literal notranslate"><span class="pre">NAutoVTs=2</span></code>.</p>
+<p>然后运行</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span>edit<span class="w"> </span>getty@tty1
+</pre></div>
+</div>
+<p>, 输入</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">ExecStart</span><span class="o">=</span>
+<span class="n">ExecStart</span><span class="o">=-/</span><span class="n">sbin</span><span class="o">/</span><span class="n">agetty</span> <span class="o">--</span><span class="n">autologin</span> <span class="n">toybrick</span> <span class="o">--</span><span class="n">noclear</span> <span class="o">%</span><span class="n">I</span> <span class="mi">38400</span> <span class="n">linux</span>
+</pre></div>
+</div>
+<p>启用<code class="docutils literal notranslate"><span class="pre">getty&#64;tty1.service</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>getty@tty1.service
+</pre></div>
+</div>
+<p>然后重启.</p>
+</section>
+<section id="mirror">
+<h2>mirror设置<a class="headerlink" href="#mirror" title="Link to this heading">¶</a></h2>
+<p>配置文件在<code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d</span></code>.
+文件参考<a class="reference external" href="https://github.com/soda92/fedora-repo-config">github</a>.
+编辑<code class="docutils literal notranslate"><span class="pre">/etc/dnf/dnf.conf</span></code>, 在最后加入<code class="docutils literal notranslate"><span class="pre">fastestmirror=1</span></code>.</p>
+</section>
+<section id="id1">
+<h2>软件升级<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>升级系统： <a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/dnf-system-upgrade/">fedora
+wiki</a>。
+只支持跨两个版本，所以我升级到了fedora 30.
+(不知道会不会break原本的驱动和库</p>
+<p>当时存储还不够(16G存储), 我删掉了~/.cache, python package,
+qtcreator才升级完成.</p>
+<p>首先刷新一下:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>--refresh
+</pre></div>
+</div>
+<p>然后重启.</p>
+<p>安装dnf-plugin-system-upgrade:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo dnf install dnf-plugin-system-upgrade
+</pre></div>
+</div>
+<p>下载升级软件包:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo dnf system-upgrade download --releasever=30 --allowerasing --skip-broken
+</pre></div>
+</div>
+<p>升级前需要先将locale设置为en_US, 不然会出现终端方块的情况.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo localectl set-locale LANG=en_US.utf8
+</pre></div>
+</div>
+<p>升级:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo dnf system-upgrade reboot
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>安装软件<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dnf<span class="w"> </span>makecache
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>vim<span class="w"> </span>ncdu<span class="w"> </span>zsh<span class="w"> </span>tmux<span class="w"> </span>qtcreator<span class="w"> </span>-y
+chsh<span class="w"> </span>-s<span class="w"> </span><span class="k">$(</span>which<span class="w"> </span>zsh<span class="k">)</span>
+</pre></div>
+</div>
+<p>qtcreator是之前卸载的.</p>
+</section>
+<section id="id3">
+<h2>设置防火墙<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>针对ftp服务（vsftpd）：</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--add-port<span class="o">=</span><span class="m">21</span>/tcp
+sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--runtime-to-permanent
+</pre></div>
+</div>
+<p>查看允许的端口</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-ports
+</pre></div>
+</div>
+<p>参考：<a class="reference external" href="https://docs.fedoraproject.org/en-US/quick-docs/firewalld/">fedora文档</a></p>
+</section>
+<section id="id4">
+<h2>其他<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>查看开机启动时的错误:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>systemctl --state=failed
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>待解决<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>iwd无法使用</p>
+<p>查看iwd启动程序:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>systemctl cat iwd
+</pre></div>
+</div>
+<p>是<code class="docutils literal notranslate"><span class="pre">/usr/libexec/iwd</span></code>.</p>
+<p>运行时的错误:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[toybrick@toybrick]~% /usr/libexec/iwd
+DES support not found
+No CBC(DES3_EDE) support found, certain TLS connections might fail
+No Diffie-Hellman support found, WPS will not be available
+No keyring restrictions support found.
+No asymmetric key support found.
+TLS based WPA-Enterprise authentication methods will not function.
+Kernel 4.20+ is required for this feature.
+The following options are missing in the kernel:
+        CONFIG_CRYPTO_USER_API_SKCIPHER
+        CONFIG_ASYMMETRIC_KEY_TYPE
+        CONFIG_KEY_DH_OPERATIONS
+        CONFIG_CRYPTO_ECB
+        CONFIG_KEYS
+        CONFIG_CRYPTO_CBC
+        CONFIG_CRYPTO_DES
+        CONFIG_CRYPTO_DES
+        CONFIG_ASYMMETRIC_PUBLIC_KEY_SUBTYPE
+        CONFIG_PKCS7_MESSAGE_PARSER
+        CONFIG_X509_CERTIFICATE_PARSER
+        CONFIG_PKCS8_PRIVATE_KEY_PARSER
+The following optimized implementations might be available:
+        CONFIG_CRYPTO_DES3_EDE_X86_64
+        CONFIG_CRYPTO_DES3_EDE_X86_64
+</pre></div>
+</div>
+<p>好像没有办法升级内核.</p>
+</section>
+<section id="id6">
+<h2>板子资料<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://t.rock-chips.com/wiki.php">rocketchips</a></p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SodaCris's blog</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Articles:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="2022-04-03-move-to-ipykernel.html">迁移到Jupyter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2021-07-27-coding-is-political.html">代码的政治性</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2020-11-19-ctrl-z-docker-powershell-command-line.html">ctrl+z导致powershell中docker命令行意外退出</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">toybrick板子折腾笔记</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2021-10-17-trying-d3js.html">尝试d3js</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2021-12-21-building-qt.html">编译Qt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2022-11-24-linux-scan-new-disk-vmware.html">Linux scan new disk (VMWare)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2021-09-26-using-of-auto-in-cpp.html">C++中auto的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2022-04-13-vagrant-config.html">Vagrant Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2022-04-13-vagrant-config.html#update-images">update images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2021-04-24-tempermonkey-captcha-recognization.html">tampermonkey验证码识别</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About me</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="2020-11-19-ctrl-z-docker-powershell-command-line.html" title="previous chapter">ctrl+z导致powershell中docker命令行意外退出</a></li>
+      <li>Next: <a href="2021-10-17-trying-d3js.html" title="next chapter">尝试d3js</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, SodaCris.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/2021-10-28-toybrick-tb96-ai.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
